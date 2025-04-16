@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <div id="notification-area"></div>
+
+    <div class="container mx-auto p-4 md:p-6 max-w-full lg:max-w-7xl xl:max-w-screen-xl">
+
+        <header class="mb-6">
+            <h1 class="text-3xl md:text-4xl font-bold text-center text-indigo-700">Library Management System</h1>
+        </header>
+
+        <main class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+            <div class="lg:col-span-1 space-y-6">
+                <section id="add-book-section" class="bg-white p-5 rounded-lg shadow-md">
+                    <h2 class="text-xl font-semibold mb-4 text-gray-700">Add New Book</h2>
+                    <form id="add-book-form" class="space-y-3">
+                        <div>
+                            <label for="title" class="block text-xs font-medium text-gray-600 mb-1">Title</label>
+                            <input type="text" id="title" name="title" required class="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:ring-indigo-500 focus:border-indigo-500" placeholder="e.g., The Great Gatsby">
+                        </div>
+                        <div>
+                            <label for="author" class="block text-xs font-medium text-gray-600 mb-1">Author</label>
+                            <input type="text" id="author" name="author" required class="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:ring-indigo-500 focus:border-indigo-500" placeholder="e.g., F. Scott Fitzgerald">
+                        </div>
+                        <div>
+                            <label for="isbn" class="block text-xs font-medium text-gray-600 mb-1">ISBN</label>
+                            <input type="text" id="isbn" name="isbn" required pattern="^[\d\-X]{10,}$" title="Enter a valid ISBN (at least 10 digits/hyphens/X)" class="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:ring-indigo-500 focus:border-indigo-500" placeholder="e.g., 978-3-16-148410-0">
+                            <p id="isbn-error" class="text-red-500 text-xs mt-1 hidden">ISBN already exists.</p>
+                        </div>
+                         <div>
+                            <label for="genre" class="block text-xs font-medium text-gray-600 mb-1">Genre</label>
+                            <input type="text" id="genre" name="genre" class="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:ring-indigo-500 focus:border-indigo-500" placeholder="e.g., Fiction">
+                        </div>
+                         <div>
+                            <label for="year" class="block text-xs font-medium text-gray-600 mb-1">Pub. Year</label>
+                            <input type="number" id="year" name="year" min="0" max="9999" class="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:ring-indigo-500 focus:border-indigo-500" placeholder="e.g., 1925">
+                        </div>
+                        <div>
+                            <button type="submit" class="w-full mt-2 px-5 py-2 bg-indigo-600 text-white font-semibold rounded-md text-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 shadow">
+                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="action-icon"><path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" /></svg>
+                                Add Book
+                            </button>
+                        </div>
+                    </form>
+                </section>
+
+                 <section id="student-management-section" class="bg-white p-5 rounded-lg shadow-md">
+                    <h2 class="text-xl font-semibold mb-4 text-gray-700">Manage Students</h2>
+
+                    <form id="add-student-form" class="space-y-3 mb-5">
+                         <h3 class="text-lg font-medium text-gray-600 mb-2">Add New Student</h3>
+                        <div>
+                            <label for="student-name" class="block text-xs font-medium text-gray-600 mb-1">Student Name</label>
+                            <input type="text" id="student-name" name="student-name" required class="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:ring-indigo-500 focus:border-indigo-500" placeholder="e.g., Jane Doe">
+                        </div>
+                        <div>
+                            <label for="student-id" class="block text-xs font-medium text-gray-600 mb-1">Student ID</label>
+                            <input type="text" id="student-id" name="student-id" required class="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:ring-indigo-500 focus:border-indigo-500" placeholder="e.g., S1001">
+                             <p id="student-id-error" class="text-red-500 text-xs mt-1 hidden">Student ID already exists.</p>
+                        </div>
+                        <div>
+                            <button type="submit" class="w-full mt-2 px-5 py-2 bg-teal-600 text-white font-semibold rounded-md text-sm hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500 shadow">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="action-icon"><path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" /></svg>
+                                Add Student
+                            </button>
+                        </div>
+                    </form>
+
+                    <h3 class="text-lg font-medium text-gray-600 mb-2">Registered Students</h3>
+                     <div id="student-list-container" class="max-h-60 overflow-y-auto border rounded-md">
+                         <table class="w-full text-sm text-left text-gray-500">
+                             <thead class="text-xs text-gray-700 uppercase bg-gray-50 sticky top-0">
+                                 <tr>
+                                     <th scope="col" class="px-4 py-2">ID</th>
+                                     <th scope="col" class="px-4 py-2">Name</th>
+                                     <th scope="col" class="px-4 py-2 text-center">Books Out</th>
+                                     <th scope="col" class="px-4 py-2 text-center">Actions</th> </tr>
+                             </thead>
+                             <tbody id="student-list">
+                                 </tbody>
+                         </table>
+                         <p id="no-students-row" class="hidden p-4 text-center text-gray-500 text-sm">No students registered yet. Add one above!</p>
+                     </div>
+                </section>
+            </div>
+
+            <div class="lg:col-span-2 space-y-6">
+                <section id="search-filter-section" class="bg-white p-5 rounded-lg shadow-md">
+                     <h2 class="text-xl font-semibold mb-4 text-gray-700">Search & Filter Books</h2>
+                     <div class="flex flex-col md:flex-row gap-4">
+                         <input type="text" id="search-input" class="flex-grow px-3 py-2 border border-gray-300 rounded-md text-sm focus:ring-indigo-500 focus:border-indigo-500" placeholder="Search by Title, Author, ISBN, or Borrower Name/ID...">
+                         <select id="status-filter" class="px-3 py-2 border border-gray-300 rounded-md text-sm focus:ring-indigo-500 focus:border-indigo-500">
+                             <option value="all">All Statuses</option>
+                             <option value="available">Available</option>
+                             <option value="borrowed">Borrowed</option>
+                         </select>
+                     </div>
+                </section>
+
+                <section id="book-list-section" class="bg-white p-1 rounded-lg shadow-md overflow-x-auto">
+                     <h2 class="text-xl font-semibold mb-4 text-gray-700 px-5 pt-5">Book Collection</h2>
+                    <table class="min-w-full divide-y divide-gray-200 table-fixed">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th scope="col" class="w-[15%] px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" data-sortable data-column="title">Title <span class="sort-icon"></span></th>
+                                <th scope="col" class="w-[15%] px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" data-sortable data-column="author">Author <span class="sort-icon"></span></th>
+                                <th scope="col" class="w-[12%] px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" data-sortable data-column="isbn">ISBN <span class="sort-icon"></span></th>
+                                <th scope="col" class="w-[8%] px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Genre</th>
+                                <th scope="col" class="w-[6%] px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" data-sortable data-column="year">Year <span class="sort-icon"></span></th>
+                                <th scope="col" class="w-[8%] px-3 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                                <th scope="col" class="w-[12%] px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Borrower</th>
+                                <th scope="col" class="w-[8%] px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" data-sortable data-column="dueDate">Due Date <span class="sort-icon"></span></th>
+                                <th scope="col" class="w-[6%] px-3 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Fine</th>
+                                <th scope="col" class="w-[10%] px-3 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="book-list" class="bg-white divide-y divide-gray-200">
+                            </tbody>
+                    </table>
+                     <p id="no-books-row" class="hidden p-4 text-center text-gray-500 text-sm">No books found matching your criteria. Try adding some!</p>
+                </section>
+             </div>
+        </main>
+
+        <footer class="mt-10 text-center text-gray-500 text-xs space-y-2">
+             <button id="clear-data-button" class="px-3 py-1 bg-red-600 text-white font-semibold rounded-md text-xs hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 shadow">
+                Clear All Library Data
+            </button>
+            <p>&copy; <span id="current-year"></span> Library Management System. All rights reserved.</p>
+        </footer>
+
+    </div>
+
+    <div id="edit-book-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close-button" onclick="closeModal('edit-book-modal')">&times;</span>
+            <h2 class="text-xl font-semibold mb-4 text-gray-700">Edit Book Details</h2>
+            <p class="text-xs text-gray-500 mb-3">Note: Borrower details and status are managed via Borrow/Return actions.</p>
+            <form id="edit-book-form" class="space-y-3">
+                <input type="hidden" id="edit-isbn-hidden">
+                <div><label for="edit-title" class="block text-sm font-medium text-gray-600 mb-1">Title</label><input type="text" id="edit-title" name="title" required class="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:ring-indigo-500 focus:border-indigo-500"></div>
+                <div><label for="edit-author" class="block text-sm font-medium text-gray-600 mb-1">Author</label><input type="text" id="edit-author" name="author" required class="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:ring-indigo-500 focus:border-indigo-500"></div>
+                <div><label for="edit-genre" class="block text-sm font-medium text-gray-600 mb-1">Genre</label><input type="text" id="edit-genre" name="genre" class="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:ring-indigo-500 focus:border-indigo-500"></div>
+                <div><label for="edit-year" class="block text-sm font-medium text-gray-600 mb-1">Publication Year</label><input type="number" id="edit-year" name="year" min="0" max="9999" class="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:ring-indigo-500 focus:border-indigo-500"></div>
+                <div class="flex justify-end space-x-3 pt-2">
+                     <button type="button" onclick="closeModal('edit-book-modal')" class="px-4 py-2 bg-gray-300 text-gray-700 font-semibold rounded-md text-sm hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">Cancel</button>
+                    <button type="submit" class="px-5 py-2 bg-indigo-600 text-white font-semibold rounded-md text-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+     <div id="borrow-book-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close-button" onclick="closeModal('borrow-book-modal')">&times;</span>
+            <h2 class="text-xl font-semibold mb-4 text-gray-700">Borrow Book</h2>
+            <form id="borrow-book-form" class="space-y-4">
+                <input type="hidden" id="borrow-isbn-hidden">
+                <p class="text-sm">Select the student borrowing <strong id="borrow-book-title"></strong>.</p>
+                <div>
+                    <label for="borrower-select" class="block text-sm font-medium text-gray-600 mb-1">Select Student</label>
+                    <select id="borrower-select" name="borrower-select" required class="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:ring-indigo-500 focus:border-indigo-500 bg-white">
+                        <option value="" disabled selected>-- Select a student --</option>
+                        </select>
+                </div>
+                <p class="text-xs text-gray-500">The book will be due in <span id="borrow-duration-display"></span> days.</p>
+                <div class="flex justify-end space-x-3 pt-2">
+                     <button type="button" onclick="closeModal('borrow-book-modal')" class="px-4 py-2 bg-gray-300 text-gray-700 font-semibold rounded-md text-sm hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">Cancel</button>
+                    <button type="submit" class="px-5 py-2 bg-indigo-600 text-white font-semibold rounded-md text-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Confirm Borrow</button>
+                </div>
+            </form>
+        </div>
+    </div>
+<script src="script.js"></script>
+</body>
+</html>
